@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-Deploy (JBoss)</actionName>
+            <displayName>Deploy (JBoss)</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>package</goal>
+                <goal>org.jboss.as.plugins:jboss-as-maven-plugin:7.1.0.Final:deploy</goal>
+            </goals>
+        </action>
+    </actions>

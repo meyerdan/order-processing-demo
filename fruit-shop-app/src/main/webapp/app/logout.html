@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:substituteby="fragment/common :: head " />
+  <body>
+    <div class="wrapper">
+      <div th:substituteby="fragment/common :: navigation-default"></div>
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span12">
+            <p>
+              <span>You have been logged out.</span>
+              <a href="/fruit-shop/app/secured/view/index">Back to start</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer th:substituteby="fragment/common :: footer" />
+  </body>
+</html>

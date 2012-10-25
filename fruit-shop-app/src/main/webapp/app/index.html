@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="fruit-shop">
+  <head th:substituteby="fragment/common :: head">
+
+  </head>
+  <body ng-controller="DefaultController">
+    <div class="wrapper">
+      <div th:substituteby="fragment/common :: navigation-logged-in"></div>
+      <div class="container-fluid content-container content-inset">
+        <div th:substituteby="fragment/common :: breadcrumbs"></div>
+        <div class="row-fluid content-container">
+          <!-- actual view body is rendered here whenever the url changes -->
+          <div data-ng-view class="span12">
+          </div>
+        </div>
+      </div>
+      <div class="push-down"><!-- // --></div> 
+    </div>
+    <footer th:substituteby="fragment/common :: footer" />
+  </body>
+</html>
