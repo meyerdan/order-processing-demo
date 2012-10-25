@@ -6,21 +6,11 @@ angular
       
       $routeProvider.when('/', {
         controller: HomeController,
-        templateUrl: '../partials/homepage.html'
+        templateUrl: '/fruit-shop/app/partials/homepage.html'
       });
       
-      $routeProvider.when('/filter', { 
-        controller: FilterProcessInstancesController, 
-        templateUrl: '../partials/filter-process-instances.html'
-      });
-      
-      $routeProvider.when('/instance-details', { 
-        controller: InstanceDetailsController, 
-        templateUrl: '../partials/instance-details.html'
-      });
-    
-      $routeProvider.when('/users', { 
-        controller: UserController, 
-        templateUrl: '../partials/users.html'
+      $routeProvider.when('/articles', { 
+        controller: ArticlesController, 
+        templateUrl: '/fruit-shop/app/partials/articles.html'
       });
 }]);
