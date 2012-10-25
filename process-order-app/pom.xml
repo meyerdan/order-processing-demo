@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.camunda.fox</groupId>
+	<artifactId>process-order-app</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<name>process-order-app</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<!-- client for Java EE application server integration -->
+			<groupId>com.camunda.fox.platform</groupId>
+			<artifactId>fox-platform-client</artifactId>
+			<version>6.1.6</version>
+		</dependency>
+		<dependency>
+			<!-- process engine -->
+			<groupId>com.camunda.fox.engine</groupId>
+			<artifactId>fox-engine</artifactId>
+			<version>6.1.6</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<!-- Java EE 6 Specification -->
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-web-6.0</artifactId>
+			<version>2.0.0.Final</version>
+			<type>pom</type>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>xalan</artifactId>
+					<groupId>org.apache.xalan</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.arquillian.junit</groupId>
+			<artifactId>arquillian-junit-container</artifactId>
+			<version>1.0.0.CR7</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<!-- A web.xml is no longer required. -->
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<dependencies>
+				<dependency>
+					<!-- Needed for ArquillianProcessExecutionTest -->
+					<!-- Requires a running JBoss 7 with fox platform change to other artifact 
+						for embedded start or different server -->
+					<!-- Included here for convenience when running the test in Eclipse -->
+					<groupId>org.jboss.as</groupId>
+					<artifactId>jboss-as-arquillian-container-remote</artifactId>
+					<version>7.1.0.Final</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.12</version>
+						<configuration>
+							<excludes>
+								<!-- Exclusion for Arquillian test cases to avoid dependency on infrastructure 
+									for Maven build. Feel free to adjust to your testing requirements. -->
+								<exclude>**/Arquillian*.java</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>arq-jbossas-remote</id>
+			<dependencies>
+				<dependency>
+					<!-- Needed for ArquillianProcessExecutionTest -->
+					<!-- Requires a running JBoss 7 with fox platform change to other artifact 
+						for embedded start or different server -->
+					<groupId>org.jboss.as</groupId>
+					<artifactId>jboss-as-arquillian-container-remote</artifactId>
+					<version>7.1.0.Final</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+</project>
