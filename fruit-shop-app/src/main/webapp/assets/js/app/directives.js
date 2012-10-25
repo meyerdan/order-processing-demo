@@ -3,6 +3,4 @@
 /* Directives */
 
 angular
-  .module('fruit-shop.directives', [
-    'fruit-shop.directives.remaining'
-  ]);
+  .module('fruit-shop.directives', [ ]); // 'fruit-shop.directives.remaining' 

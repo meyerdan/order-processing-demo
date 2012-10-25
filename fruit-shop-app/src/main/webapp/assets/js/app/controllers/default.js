@@ -47,6 +47,9 @@ function DefaultController($scope, $location, Credentials) {
   // end Bread Crumb
 }
 
+/**
+ * Deals with navigation between different guys
+ */
 function NavigationController($scope, $location) {
 
   $scope.activeClass = function(link) {
