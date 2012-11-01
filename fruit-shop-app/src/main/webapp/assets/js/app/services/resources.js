@@ -4,6 +4,6 @@
 
 angular
   .module('fruit-shop.services.resources', ['ngResource', 'fruit-shop.services.base' ])
-  .factory('User', function($resource, App) {
-    return $resource(App.uri('secured/resource/user/:id'), {id: "@id"}, {});
+  .factory('Article', function($resource, App) {
+    return $resource(App.uri('resources/article/:id'), {id: "@id"}, {});
   });

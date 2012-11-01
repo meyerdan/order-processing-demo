@@ -14,8 +14,8 @@
   </properties>
 
   <dependencies>
+    <!-- Java EE 6 Specification -->
     <dependency>
-      <!-- Java EE 6 Specification -->
       <groupId>org.jboss.spec</groupId>
       <artifactId>jboss-javaee-web-6.0</artifactId>
       <version>3.0.1.Final</version>

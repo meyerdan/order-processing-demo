@@ -15,7 +15,6 @@ import com.camunda.fox.showcase.fruitshop.util.ClassUtil;
  * 
  * @author nico.rehwaldt
  */
-@LocalBean
 public class AbstractRepository<T extends AbstractEntity> {
 
   @PersistenceContext
