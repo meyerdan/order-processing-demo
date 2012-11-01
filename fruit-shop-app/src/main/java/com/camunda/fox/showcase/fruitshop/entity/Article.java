@@ -1,6 +1,5 @@
 package com.camunda.fox.showcase.fruitshop.entity;
 
-import javax.inject.Inject;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Lob;

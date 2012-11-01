@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.security.RolesAllowed;
-import javax.ejb.LocalBean;
 import javax.inject.Inject;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -29,7 +28,6 @@ import com.camunda.fox.showcase.fruitshop.web.dto.ArticleDTO;
  *
  * @author nico.rehwaldt
  */
-@LocalBean
 @Path("/article")
 public class ArticleResource extends AbstractResource {
 

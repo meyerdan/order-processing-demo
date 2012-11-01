@@ -2,7 +2,6 @@ package com.camunda.fox.showcase.fruitshop.repository;
 
 import java.util.List;
 
-import javax.ejb.LocalBean;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 

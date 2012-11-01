@@ -2,6 +2,7 @@ package com.camunda.fox.showcase.fruitshop.web.dto;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import com.camunda.fox.showcase.fruitshop.entity.Article;
 
 /**

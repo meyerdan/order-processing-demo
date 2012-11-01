@@ -16,11 +16,40 @@
   <dependencies>
     <!-- Java EE 6 Specification -->
     <dependency>
+      <!-- client for Java EE application server integration -->
+      <groupId>com.camunda.fox.platform</groupId>
+      <artifactId>fox-platform-client</artifactId>
+      <version>6.1.6</version>
+    </dependency>
+    <dependency>
+      <!-- process engine -->
+      <groupId>com.camunda.fox.engine</groupId>
+      <artifactId>fox-engine</artifactId>
+      <version>6.1.6</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <!-- Java EE 6 Specification -->
       <groupId>org.jboss.spec</groupId>
       <artifactId>jboss-javaee-web-6.0</artifactId>
       <version>3.0.1.Final</version>
       <type>pom</type>
       <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jboss.arquillian.junit</groupId>
+      <artifactId>arquillian-junit-container</artifactId>
+      <version>1.0.0.CR7</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
