@@ -1,0 +1,15 @@
+<div>
+  <table class="table">
+    <thead>
+      <th>
+        <td>Article</td><td>Amount</td><td>Price</td><td></td>
+      </th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in basket.items" ng-controller="BasketItemController">
+        <td>{{ article.name }}</td><td>{{ item.amount }}</td><td>{{ article.price }}</td><td></td>
+      </tr>
+      <tr><td colspan="2"></td><td>{{ basketPrice() }}</td></tr>
+    </tbody>
+  </table>
+</div>

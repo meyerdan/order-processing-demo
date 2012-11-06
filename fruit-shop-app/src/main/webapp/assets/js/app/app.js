@@ -13,4 +13,9 @@ angular
         controller: ArticlesController, 
         templateUrl: '/fruit-shop/app/partials/articles.html'
       });
+      
+      $routeProvider.when('/basket', { 
+        controller: BasketController, 
+        templateUrl: '/fruit-shop/app/partials/basket.html'
+      });
 }]);

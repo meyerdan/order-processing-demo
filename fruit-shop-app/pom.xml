@@ -11,6 +11,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <web.resources.override>src/main/runtime/default/webapp</web.resources.override>
+    <java.resources.override>src/main/runtime/default/resources</java.resources.override>
   </properties>
 
   <dependencies>
@@ -55,13 +57,29 @@
 
   <build>
     <finalName>fruit-shop</finalName>
+    <resources>
+      <resource>
+        <directory>${java.resources.override}</directory>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
-        <version>2.1.1</version>
+        <version>2.2</version>
         <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
+          <webResources>
+            <resource>
+              <directory>${web.resources.override}</directory>
+            </resource>
+            <resource>
+              <directory>src/main/webapp</directory>
+            </resource>
+          </webResources>
         </configuration>
       </plugin>
       <plugin>
@@ -74,6 +92,25 @@
       </plugin>
     </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>glassfish</id>
+      <properties>
+        <web.resources.override>src/main/runtime/glassfish/webapp</web.resources.override>
+        <java.resources.override>src/main/runtime/glassfish/resources</java.resources.override>
+      </properties>
+    </profile>
+    <profile>
+      <id>jboss</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <web.resources.override>src/main/runtime/jboss/webapp</web.resources.override>
+        <java.resources.override>src/main/runtime/jboss/resources</java.resources.override>
+      </properties>
+    </profile>
+  </profiles>
   <repositories>
     <repository>
       <url>http://download.eclipse.org/rt/eclipselink/maven.repo/</url>

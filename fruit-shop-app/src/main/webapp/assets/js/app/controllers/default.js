@@ -2,21 +2,10 @@
 
 window.credentials = null;
 
-function DefaultController($scope, $location, Credentials) {
-  
-  Credentials.reload();
-  
-  // TODO: get from cookie
-  $scope.currentUser = null;
-  
-  $scope.$watch(Credentials.watchCurrent, function(newValue) {
-    $scope.currentUser = newValue;
-  });
-  
-  $scope.$on("user-changed", function(event, user) {
-    $scope.currentUser = user;
-  });
-  
+function DefaultController($scope, $location) {
+
+  $scope.basket = { items: [] };
+
   // Bread Crumb 
   var breadCrumbs = $scope.breadCrumbs = [];
 

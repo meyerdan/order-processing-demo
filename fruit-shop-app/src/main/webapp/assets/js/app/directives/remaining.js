@@ -4,112 +4,6 @@
 
 angular
 .module('fruit-shop.directives.remaining', [])
-.directive('ngCombobox', function(Event) {
-  return {
-    restrict: 'A',
-    require: 'ngModel',
-    link: function (scope, elm, attrs, model) {
-      if (model) {
-        elm.on(Event.ngChange, function() {
-          scope.$apply(function() {
-            var input = getInputText();
-            if (input) {
-              // catch user typed values (not selected ones)
-              model.$setViewValue(input.value);
-            }
-          });
-        });
-      }
-
-      // value list changed, update combobox
-      scope.$watch(attrs.values, function() {
-        var comboboxContainer = getComboboxContainer();
-        if (comboboxContainer) {
-          // combobox already presents, remove old one
-          var select = elm.detach();
-          $(comboboxContainer).parent().prepend(select);
-          $(comboboxContainer).remove();
-        }
-        // init new combobox
-        elm.combobox({
-          template: '<div class="combobox-container"><input type="text" autocomplete="off" class="dropdown-toggle" /><span class="" data-dropdown="dropdown"></span></div>'
-        });
-      });
-
-      // update input with model when default value is set
-      scope.$watch(model, function() {
-        var input = getInputText();
-        if (input) {
-          var oldValue = input.value;
-          if (oldValue !== model.$modelValue) {
-            $(input).val(model.$modelValue);
-          }
-        }
-      });
-
-      // do some cleanup
-      scope.$on(Event.destroy, function () {
-        $('ul.typeahead.dropdown-menu').each(function(){
-          $(this).remove();
-        });
-        elm.unbind($().combobox());
-      });
-
-      // get container which holds the combobox elements
-      function getComboboxContainer() {
-        var comboboxContainer = elm.parent('.combobox-container');
-        if (comboboxContainer.length == 1) {
-          return comboboxContainer[0];
-        } else {
-          return;
-        }
-      }
-
-      // get combobox's input text
-      function getInputText() {
-        var comboboxContainer = getComboboxContainer();
-        if (comboboxContainer) {
-          var input = $(comboboxContainer).children('input')[0];
-          if (input) {
-            return input;
-          }
-        }
-
-        return;
-      }
-    }
-  };
-})
-/**
- * Realizes a bpmn diagram ui component in the roundtrip details dialog.
- * 
- * @param roundtrip reference to the roundtrip the diagram belongs to
- * @param diagram or null the diagram which is managed / displayed
- * @param identifier the identifier of the diagram (eighter leftHandSide or rightHandSide)
- * 
- * Usage:
- * 
- * <bpmn-diagram handle="leftDiagram" roundtrip="myRoundtrip" diagram="myRoundtrip.leftHandSide" identifier="leftHandSide" />
- */
-.directive("bpmnDiagram", function(App) {
-  return {
-    restrict: 'E',
-    scope: {
-      roundtrip: '=', 
-      diagram: '=',
-      handle : '@',
-      identifier: '@'
-    }, 
-    templateUrl: App.uri("secured/view/partials/bpmn-diagram.html"),
-    controller: 'BpmnDiagramController', 
-    link: function(scope, element, attrs) {
-      scope.identifier = attrs.identifier;
-      if (attrs.handle) {
-    	  scope.$parent[attrs.handle] = scope;
-   	  }
-    }
-  };
-})
 .directive("help", function(App) {
   return {
     restrict: 'A',    
@@ -215,20 +109,6 @@ angular
         if (scope.diagram && newStatus == "UNKNOWN" && oldStatus) {
           updateImage(scope.diagram, true);
         }
-      });
-    }
-  };
-})
-
-.directive('ifAdmin', function(Credentials) {
-  return {
-    restrict: 'A',
-    scope: { }, 
-    transclude: true, 
-    template: '<span ngm-if="isAdmin" ng-transclude></span>', 
-    link: function(scope, element, attrs) {
-      scope.$watch(Credentials.watchCurrent, function(newValue) {
-        scope.isAdmin = Credentials.isAdmin();
       });
     }
   };
