@@ -4,7 +4,8 @@
     <jta-data-source>java:/jboss/datasources/FoxEngineDS</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="hibernate.hbm2ddl.auto" value="create" />
+      <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+      <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
     </properties>
   </persistence-unit>
 </persistence>

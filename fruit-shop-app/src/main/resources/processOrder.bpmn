@@ -43,7 +43,7 @@
       <outgoing>sid-CBBF786D-5FD8-4832-AAEC-F6A61EC39274</outgoing>
       <messageEventDefinition id="sid-bc7aaa73-9ced-4c49-90b3-69cfa98d0ad0" messageRef="sid-914583D1-BCE9-484F-84F2-990BD723791E"/>
     </startEvent>
-    <serviceTask id="sid-F2EC54E7-D69F-466B-96A3-78385F1DB3CB" activiti:expression="${true}" name="Reserve Order Items" implementation="webService">
+    <serviceTask id="sid-F2EC54E7-D69F-466B-96A3-78385F1DB3CB" activiti:expression="${true}" activiti:async="true" name="Reserve Order Items" implementation="webService">
       <incoming>sid-CBBF786D-5FD8-4832-AAEC-F6A61EC39274</incoming>
       <outgoing>sid-25E77FF0-93A5-4723-9E95-9ADF4025A05E</outgoing>
     </serviceTask>
