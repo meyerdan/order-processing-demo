@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.activiti.cdi.BusinessProcess;
+import org.activiti.engine.delegate.BpmnError;
 
 import com.camunda.fox.showcase.fruitshop.inventory.boundary.InventoryService;
 
@@ -21,7 +22,12 @@ public class ProcessOrder {
   public void reserveOrderItems() {
     
     Long orderId = businessProcess.getVariable(VARNAME_ORDER_ID);
-    inventoryService.reserveOrderItems(orderId);
+    boolean orderConfirmed = inventoryService.reserveOrderItems(orderId);
+    
+    if(!orderConfirmed) {
+      throw new BpmnError("itemsOutOfStock");
+    }
+    
     
   }
   

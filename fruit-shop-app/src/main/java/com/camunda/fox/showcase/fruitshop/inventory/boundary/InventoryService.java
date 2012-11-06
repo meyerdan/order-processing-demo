@@ -14,30 +14,43 @@ public class InventoryService {
 
   @PersistenceContext
   private EntityManager entityManager;
-  
-  public void reserveOrderItems(Long orderId) {
+
+  /**
+   * 
+   * @param orderId
+   * @return true if the reservation can be confirmed for all order items.
+   */
+  public boolean reserveOrderItems(Long orderId) {
     
-    List<Object[]> result = getItemsForOrder(orderId);
+    List<Object[]> itemsForOrder = getItemsForOrder(orderId);
     
-    for (Object[] objects : result) {
+    boolean orderConfirmed = true;
+    
+    for (Object[] objects : itemsForOrder) {
       OrderItem oi = (OrderItem) objects[0];
       InventoryItem ii = (InventoryItem) objects[1];
       
-      ii.reserve(oi);           
+      int available = ii.getAvailable();
+      int reserved = ii.getReserved();
+      int orderedAmount = oi.getAmount();
+      
+      if( (available - reserved) < orderedAmount ) {
+        // the item is out of stock
+        oi.setReservationStatus(OrderItem.STATUS_UNCONFIRMED);
+        orderConfirmed = false;
+        
+      } else {
+        // reserve the ordered items
+        ii.setReserved(reserved + orderedAmount);
+        oi.setReservationStatus(OrderItem.STATUS_CONFIRMED);
+      }        
     }
+    
+    return orderConfirmed;
     
   }
   
   public void releaseReservation(Long orderId) {
-    
-    List<Object[]> result = getItemsForOrder(orderId);
-    
-    for (Object[] objects : result) {
-      OrderItem oi = (OrderItem) objects[0];
-      InventoryItem ii = (InventoryItem) objects[1];
-      
-      ii.release(oi);           
-    }
     
   }
 

@@ -10,12 +10,17 @@ import com.camunda.fox.showcase.fruitshop.inventory.entity.Article;
 @Entity
 public class OrderItem extends AbstractEntity {
 
+  public static final String STATUS_CONFIRMED = "confirmed";
+  public static final String STATUS_UNCONFIRMED = "unconfirmed";
+  
   private static final long serialVersionUID = 1L;
 
   @ManyToOne
   private Article article;
 
   private int amount;
+  
+  private String reservationStatus;
 
   public Article getArticle() {
     return article;
@@ -31,6 +36,14 @@ public class OrderItem extends AbstractEntity {
 
   public void setAmount(int amount) {
     this.amount = amount;
+  }
+  
+  public String getReservationStatus() {
+    return reservationStatus;
+  }
+  
+  public void setReservationStatus(String reservationStatus) {
+    this.reservationStatus = reservationStatus;
   }
 
 }

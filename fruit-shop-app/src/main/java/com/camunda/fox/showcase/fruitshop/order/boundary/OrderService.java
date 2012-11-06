@@ -13,6 +13,7 @@ import com.camunda.fox.showcase.fruitshop.order.boundary.rest.dto.OrderDTO;
 import com.camunda.fox.showcase.fruitshop.order.boundary.rest.dto.OrderItemDTO;
 import com.camunda.fox.showcase.fruitshop.order.entity.Order;
 import com.camunda.fox.showcase.fruitshop.order.entity.OrderItem;
+import com.camunda.fox.showcase.fruitshop.order.process.ProcessOrder;
 import com.camunda.fox.showcase.fruitshop.order.repository.OrderRepository;
 
 @Stateless 
@@ -46,7 +47,7 @@ public class OrderService {
     
     orderRepository.saveAndFlush(order);    
     
-    businessProcess.setVariable("orderId", order.getId());
+    businessProcess.setVariable(ProcessOrder.VARNAME_ORDER_ID, order.getId());
     String pid = businessProcess.startProcessByMessage("New Order").getId();
     
     order.setProcessInstanceId(pid);

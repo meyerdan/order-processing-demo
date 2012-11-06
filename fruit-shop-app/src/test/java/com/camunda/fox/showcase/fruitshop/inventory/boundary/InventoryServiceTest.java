@@ -1,4 +1,4 @@
-package com.camunda.fox.showcase.fruitshop.service;
+package com.camunda.fox.showcase.fruitshop.inventory.boundary;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -30,8 +30,12 @@ public class InventoryServiceTest {
   @Deployment
   public static WebArchive deployment() {    
     return ShrinkWrap.create(WebArchive.class)
-      .addPackage(AbstractEntity.class.getPackage())
-      .addClass(InventoryService.class)
+      .addClass(AbstractEntity.class)
+      .addClass(Order.class)
+      .addClass(OrderItem.class)
+      .addClass(Article.class)
+      .addClass(InventoryItem.class)
+      .addClass(InventoryService.class)      
       .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
       .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     

@@ -55,16 +55,4 @@ public class InventoryItem extends AbstractEntity {
     this.article = article;
   }
 
-  public void reserve(int amount) {
-    reserved += amount;    
-  }
-
-  public void reserve(OrderItem oi) {
-    reserve(oi.getAmount());    
-  }
-
-  public void release(OrderItem oi) {
-    reserve(-oi.getAmount());      
-  }
-
 }
