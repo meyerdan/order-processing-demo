@@ -43,7 +43,7 @@
                 <ul class="nav" ng-controller="NavigationController">
                   <li ng-class="activeClass('/')"><a href="#/">Home</a></li>
                   <li ng-class="activeClass('/articles')"><a href="#/articles">Articles</a></li>
-                  <li ng-class="activeClass('/basket')"><a href="#/basket">My Shopping Basket</a></li>
+                  <li ng-class="activeClass('/basket')"><a href="#/basket">My Shopping Basket <span ng-show="basket.items.length" class="badge badge-info">{{ basketSize() }}</span></a></li>
                 </ul>
               </ul>
             </div>
@@ -88,6 +88,7 @@
       <script src="/fruit-shop/assets/js/app/app.js"></script>
 
       <script src="/fruit-shop/assets/js/app/directives.js"></script>
+      <script src="/fruit-shop/assets/js/app/directives/modalDialog.js"></script>
       <script src="/fruit-shop/assets/js/app/directives/ngmif.js"></script>
 
       <script src="/fruit-shop/assets/js/app/filters.js"></script>

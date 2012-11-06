@@ -17,6 +17,7 @@ import javax.ws.rs.PathParam;
 import com.camunda.fox.showcase.fruitshop.application.common.AbstractResource;
 import com.camunda.fox.showcase.fruitshop.inventory.boundary.ArticleDTO;
 import com.camunda.fox.showcase.fruitshop.inventory.entity.Article;
+import com.camunda.fox.showcase.fruitshop.inventory.entity.InventoryItem;
 import com.camunda.fox.showcase.fruitshop.inventory.repository.ArticleRepository;
 
 /**
@@ -47,7 +48,15 @@ public class ArticleResource extends AbstractResource {
    */
   @GET
   public List<ArticleDTO> list() {
-    return ArticleDTO.wrapAll(articleRepository.findAll());
+    List<Object[]> data = articleRepository.findArticlesAndAvailability();
+    
+    List<ArticleDTO> articles = new ArrayList<ArticleDTO>();
+    for (Object[] entry: data) {
+      
+      articles.add(new ArticleDTO((Article) entry[0], (InventoryItem) entry[1]));
+    }
+    
+    return articles;
   }
 
   /**
@@ -128,11 +137,11 @@ public class ArticleResource extends AbstractResource {
       
       List<Article> articles = new ArrayList<Article>();
       
-      articles.add(new Article("Cake", "A delicious cake. Home made", 5));
-      articles.add(new Article("Salat", "A freshly harvested salat", 3));
-      articles.add(new Article("Cucumber", "Not a testing framework for Ruby", 0));
-      articles.add(new Article("Salami", "Real german sausage", 10));
-      articles.add(new Article("Weißwurscht", "Bavarian special dish. Some call it sausage", 20));
+      articles.add(new Article("Cake", "A delicious cake. Home made", 5, 50));
+      articles.add(new Article("Salat", "A freshly harvested salat", 3, 4));
+      articles.add(new Article("Cucumber", "Not a testing framework for Ruby", 0, 3));
+      articles.add(new Article("Salami", "Real german sausage", 10, 12));
+      articles.add(new Article("Weißwurscht", "Bavarian special dish. Some call it sausage", 20, 10));
       
       for (Article article : articles) {
         articleRepository.saveAndFlush(article);

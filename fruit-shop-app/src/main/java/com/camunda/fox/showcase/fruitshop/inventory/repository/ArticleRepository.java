@@ -1,6 +1,7 @@
 package com.camunda.fox.showcase.fruitshop.inventory.repository;
 
 
+import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
@@ -14,5 +15,8 @@ import com.camunda.fox.showcase.fruitshop.inventory.entity.Article;
 @LocalBean
 @Stateless
 public class ArticleRepository extends AbstractRepository<Article> {
-  
+
+  public List<Object[]> findArticlesAndAvailability() {
+    return em.createQuery("SELECT a, i FROM Article a JOIN a.inventoryItem i").getResultList();
+  }
 }

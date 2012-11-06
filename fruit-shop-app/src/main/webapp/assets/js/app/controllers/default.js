@@ -6,6 +6,17 @@ function DefaultController($scope, $location) {
 
   $scope.basket = { items: [] };
 
+  $scope.basketSize = function() {
+    var size = 0;
+    
+    for (var i in $scope.basket.items) {
+      var item = $scope.basket.items[i];
+      size += item.amount;
+    }
+    
+    return size;
+  };
+  
   // Bread Crumb 
   var breadCrumbs = $scope.breadCrumbs = [];
 

@@ -109,6 +109,7 @@
       <properties>
         <web.resources.override>src/main/runtime/glassfish/webapp</web.resources.override>
         <java.resources.override>src/main/runtime/glassfish/resources</java.resources.override>
+        <skipTests>true</skipTests>
       </properties>
     </profile>
     <profile>

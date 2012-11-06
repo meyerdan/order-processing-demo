@@ -18,6 +18,8 @@ public class Article extends AbstractEntity {
 
   private String name;
   
+  private int price;
+  
   @Lob
   private String description;
   
@@ -26,11 +28,20 @@ public class Article extends AbstractEntity {
   
   public Article() { }
 
-  public Article(String name, String description, int availability) {
+  public Article(String name, String description, int availability, int price) {
     this.name = name;
     this.description = description;
     
+    this.price = price;
     this.inventoryItem = new InventoryItem(this, availability);
+  }
+
+  public int getPrice() {
+    return price;
+  }
+
+  public void setPrice(int price) {
+    this.price = price;
   }
 
   public String getName() {

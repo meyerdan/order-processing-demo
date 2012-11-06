@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.camunda.fox.showcase.fruitshop.inventory.entity.Article;
+import com.camunda.fox.showcase.fruitshop.inventory.entity.InventoryItem;
 
 /**
  *
@@ -17,10 +18,22 @@ public class ArticleDTO {
   
   private String description;
   
+  private int price;
+  
+  private int available;
+  
   public ArticleDTO(Article article) {
     this.id = article.getId();
     this.name = article.getName();
     this.description = article.getDescription();
+    
+    this.price = article.getPrice();
+  }
+
+  public ArticleDTO(Article article, InventoryItem inventoryItem) {
+    this(article);
+    
+    this.available = inventoryItem.getAvailable();
   }
 
   /**
@@ -58,11 +71,33 @@ public class ArticleDTO {
     return description;
   }
 
+  public int getPrice() {
+    return price;
+  }
+
+  public void setPrice(int price) {
+    this.price = price;
+  }
+
   /**
    * @param description the description to set
    */
   public void setDescription(String description) {
     this.description = description;
+  }
+  
+  /**
+   * @return the available
+   */
+  public int getAvailable() {
+    return available;
+  }
+
+  /**
+   * @param available the available to set
+   */
+  public void setAvailable(int available) {
+    this.available = available;
   }
   
   // static helpers /////////////////////////////////////////////////////
