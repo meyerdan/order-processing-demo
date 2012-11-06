@@ -1,7 +1,10 @@
-package com.camunda.fox.showcase.fruitshop.entity;
+package com.camunda.fox.showcase.fruitshop.order.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+
+import com.camunda.fox.showcase.fruitshop.application.common.AbstractEntity;
+import com.camunda.fox.showcase.fruitshop.inventory.entity.Article;
 
 
 @Entity

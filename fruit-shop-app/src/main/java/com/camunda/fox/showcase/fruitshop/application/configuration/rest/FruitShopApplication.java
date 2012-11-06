@@ -1,4 +1,4 @@
-package com.camunda.fox.showcase.fruitshop.web;
+package com.camunda.fox.showcase.fruitshop.application.configuration.rest;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

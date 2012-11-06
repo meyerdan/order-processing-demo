@@ -1,4 +1,4 @@
-package com.camunda.fox.showcase.fruitshop.web.resource;
+package com.camunda.fox.showcase.fruitshop.inventory.boundary.rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +14,10 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-import com.camunda.fox.showcase.fruitshop.entity.Article;
-import com.camunda.fox.showcase.fruitshop.repository.ArticleRepository;
-import com.camunda.fox.showcase.fruitshop.web.dto.ArticleDTO;
+import com.camunda.fox.showcase.fruitshop.application.common.AbstractResource;
+import com.camunda.fox.showcase.fruitshop.inventory.boundary.ArticleDTO;
+import com.camunda.fox.showcase.fruitshop.inventory.entity.Article;
+import com.camunda.fox.showcase.fruitshop.inventory.repository.ArticleRepository;
 
 /**
  * This is the main roundtrip rest controller which exposes roundtrip

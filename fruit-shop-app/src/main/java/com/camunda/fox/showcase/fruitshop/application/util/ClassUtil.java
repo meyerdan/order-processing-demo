@@ -1,4 +1,4 @@
-package com.camunda.fox.showcase.fruitshop.util;
+package com.camunda.fox.showcase.fruitshop.application.util;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

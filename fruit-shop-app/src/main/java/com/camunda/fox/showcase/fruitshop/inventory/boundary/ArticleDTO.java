@@ -1,9 +1,9 @@
-package com.camunda.fox.showcase.fruitshop.web.dto;
+package com.camunda.fox.showcase.fruitshop.inventory.boundary;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.camunda.fox.showcase.fruitshop.entity.Article;
+import com.camunda.fox.showcase.fruitshop.inventory.entity.Article;
 
 /**
  *

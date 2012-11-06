@@ -1,9 +1,11 @@
-package com.camunda.fox.showcase.fruitshop.entity;
+package com.camunda.fox.showcase.fruitshop.inventory.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
+
+import com.camunda.fox.showcase.fruitshop.application.common.AbstractEntity;
 
 /**
  *
@@ -45,5 +47,13 @@ public class Article extends AbstractEntity {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+  
+  public InventoryItem getInventoryItem() {
+    return inventoryItem;
+  }
+  
+  public void setInventoryItem(InventoryItem inventoryItem) {
+    this.inventoryItem = inventoryItem;
   }
 }

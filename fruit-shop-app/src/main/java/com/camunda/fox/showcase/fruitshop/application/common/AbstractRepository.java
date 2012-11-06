@@ -1,12 +1,12 @@
-package com.camunda.fox.showcase.fruitshop.repository;
+package com.camunda.fox.showcase.fruitshop.application.common;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.camunda.fox.showcase.fruitshop.entity.AbstractEntity;
-import com.camunda.fox.showcase.fruitshop.util.ClassUtil;
+import com.camunda.fox.showcase.fruitshop.application.util.ClassUtil;
+
 
 
 /**
