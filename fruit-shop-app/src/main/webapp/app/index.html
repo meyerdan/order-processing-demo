@@ -43,7 +43,7 @@
                 <ul class="nav" ng-controller="NavigationController">
                   <li ng-class="activeClass('/')"><a href="#/">Home</a></li>
                   <li ng-class="activeClass('/articles')"><a href="#/articles">Articles</a></li>
-                  <li ng-class="activeClass('/basket')"><a href="#/basket">My Shopping Basket <span ng-show="basket.items.length" class="badge badge-info">{{ basketSize() }}</span></a></li>
+                  <li ng-class="activeClass('/basket')"><a href="#/basket">My Shopping Basket <span ng-show="basket.items.length" ng-cloak class="badge badge-info">{{ basketSize() }}</span></a></li>
                 </ul>
               </ul>
             </div>
@@ -103,6 +103,7 @@
       <script src="/fruit-shop/assets/js/app/controllers/default.js"></script>
       <script src="/fruit-shop/assets/js/app/controllers/home.js"></script>
       <script src="/fruit-shop/assets/js/app/controllers/basket.js"></script>
+      <script src="/fruit-shop/assets/js/app/controllers/order.js"></script>
       <script src="/fruit-shop/assets/js/app/controllers/articles.js"></script>
     </footer>
   </body>

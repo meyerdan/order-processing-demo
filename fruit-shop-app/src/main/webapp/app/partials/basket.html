@@ -35,7 +35,7 @@
         <div class="modal-body">
           <div ng-show="!state">
             <p>
-              Please provide us with your name so that we can googggll your address and ship 
+              Please provide us with your name so that we can <code>googggll</code> your address and ship 
               {{ basketSize() }} product(s) accordingly. 
             </p>
             <form class="form-horizontal" novalidate data-ng-submit="buy()" name="checkoutBasketForm">
@@ -52,6 +52,7 @@
           <div ng-show="state == 'SUCCESS'">
             <p>
               Your order has been added with the id <strong>{{ order.orderId }}</strong>.
+              You can track the order status via <a href="#/order/{{order.orderId}}" ng-click="checkoutDialog.close()">this link</a>.
             </p>
           </div>
           <div ng-show="state == 'FAILURE'">

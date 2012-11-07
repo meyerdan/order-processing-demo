@@ -61,9 +61,8 @@ function BasketCheckoutController($scope, $http, App) {
     $scope.order = { customer: $scope.customerName, orderItems: items };
     
     $http.post("/fruit-shop/app/resources/order", $scope.order).success(function(data) {
-      $scope.order.orderId = data.orderId;
-      
       $scope.state = "SUCCESS";
+      $scope.order.orderId = data.orderId;
     }).error(function() {
       $scope.state = "FAILURE";
     });

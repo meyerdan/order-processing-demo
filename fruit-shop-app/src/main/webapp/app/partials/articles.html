@@ -1,11 +1,11 @@
 <div>
   <div class="row-fluid">
     <ul class="thumbnails">
-      <li class="span2" ng-repeat="article in articles" style="width: 200px; height: 300px; float: left;">
+      <li class="span3" ng-repeat="article in articles">
         <div class="thumbnail">
-          <img src="http://placehold.it/250x150" alt="{{article.name}}">
-          <div class="caption" style="float: left">
-            <h3>{{article.name}}</h3>
+          <img src="http://placehold.it/300x150" alt="{{article.name}}">
+          <div class="caption">
+            <h3 style="word-break: break-all;">{{article.name}}</h3>
             <p>{{article.description}}</p>
             <p class="actions">
               <a ng-show="!inBasket(article)" class="btn btn-primary" ng-click="addToBasket(article)">Add to Basket</a>
