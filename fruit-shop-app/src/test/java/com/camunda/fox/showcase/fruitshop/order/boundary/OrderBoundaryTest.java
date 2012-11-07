@@ -4,11 +4,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
 
+import org.activiti.engine.RuntimeService;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -44,6 +46,8 @@ public class OrderBoundaryTest {
   @Inject 
   private OrderService orderService;
   
+  @Inject
+  private RuntimeService runtimeService;
   
   @Test
   public void testReserveOrderItems() throws Exception {
@@ -79,10 +83,11 @@ public class OrderBoundaryTest {
     orderItem.setArticleId(String.valueOf(a1.getId()));
     orderDTO.getOrderItems().add(orderItem);
     
-    orderService.newOrder(orderDTO);
-    
+    String newOrderId = orderService.newOrder(orderDTO);
+        
     Thread.sleep(5000);
     
+    Assert.assertEquals(1, runtimeService.createProcessInstanceQuery().count());
     
   }
 

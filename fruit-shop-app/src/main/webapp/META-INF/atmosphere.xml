@@ -1,0 +1,4 @@
+<atmosphere-handlers>
+    <atmosphere-handler context-root="/monitor/*" class-name="com.camunda.fox.showcase.fruitshop.application.configuration.websocket.PubSubAtmosphereHandler">
+    </atmosphere-handler>
+</atmosphere-handlers>

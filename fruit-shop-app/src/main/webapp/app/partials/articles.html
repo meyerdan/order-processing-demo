@@ -9,8 +9,8 @@
             <p>{{article.description}}</p>
             <p class="actions">
               <a ng-show="!inBasket(article)" class="btn btn-primary" ng-click="addToBasket(article)">Add to Basket</a>
-              <a ng-show="inBasket(article)" class="btn btn-success" ng-click="addToBasket(article)">Add ({{inBasketAmount(article)}} in Basket)</a>
-              <a href="#" class="btn" ng-click="showDetails(article)">Show Details</a>
+              <a ng-show="inBasket(article)" class="btn btn-success" ng-click="addToBasket(article)">Add to Basket ({{inBasketAmount(article)}})</a>
+             <!--  <a href="#" class="btn" ng-click="showDetails(article)">Details</a> -->
             </p>
           </div>
         </div>

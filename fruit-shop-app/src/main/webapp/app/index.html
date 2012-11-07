@@ -44,6 +44,8 @@
                   <li ng-class="activeClass('/')"><a href="#/">Home</a></li>
                   <li ng-class="activeClass('/articles')"><a href="#/articles">Articles</a></li>
                   <li ng-class="activeClass('/basket')"><a href="#/basket">My Shopping Basket <span ng-show="basket.items.length" ng-cloak class="badge badge-info">{{ basketSize() }}</span></a></li>
+                  <li ng-class="activeClass('/order')"><a href="#/order">Orders</a></li>
+                  <li ng-class="activeClass('/dashboard')"><a href="#/dashboard">Dashboard</a></li>
                 </ul>
               </ul>
             </div>
@@ -81,6 +83,7 @@
       </div>
 
       <script src="/fruit-shop/assets/js/lib/jquery-1.7.2.min.js"></script>
+      <script src="/fruit-shop/assets/js/lib/atmosphere/jquery.atmosphere.js"></script>
       <script src="/fruit-shop/assets/js/lib/bootstrap/bootstrap.js"></script>
       <script src="/fruit-shop/assets/js/lib/angular/angular.js"></script>
       <script src="/fruit-shop/assets/js/lib/angular/angular-resource.js"></script>
@@ -105,6 +108,8 @@
       <script src="/fruit-shop/assets/js/app/controllers/basket.js"></script>
       <script src="/fruit-shop/assets/js/app/controllers/order.js"></script>
       <script src="/fruit-shop/assets/js/app/controllers/articles.js"></script>
+      <script src="/fruit-shop/assets/js/app/controllers/dashboard.js"></script>
+      <script src="/fruit-shop/assets/js/app/dashboard-application.js"></script>
     </footer>
   </body>
 </html>

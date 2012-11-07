@@ -74,6 +74,29 @@
       <artifactId>shrinkwrap-resolver-api-maven</artifactId>
       <scope>test</scope>
     </dependency>
+    
+    
+    
+    <!-- Websocket Stuff -->
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.6.1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.atmosphere</groupId>
+      <artifactId>atmosphere-compat-jbossweb</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.atmosphere</groupId>
+      <artifactId>atmosphere-runtime</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+    
   </dependencies>
 
   <build>

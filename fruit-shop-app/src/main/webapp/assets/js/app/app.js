@@ -23,4 +23,9 @@ angular
         controller: OrderController, 
         templateUrl: '/fruit-shop/app/partials/order.html'
       });
+      
+      $routeProvider.when('/dashboard', { 
+          controller: DashboardController, 
+          templateUrl: '/fruit-shop/app/partials/dashboard.html'
+      });
 }]);
