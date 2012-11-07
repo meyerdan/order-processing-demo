@@ -19,6 +19,14 @@ function ArticlesController($scope, Article) {
     return null;
   }
   
+  $scope.articleImgSrc = function(article) {
+    if (article.imageUrl) {
+      return article.imageUrl;
+    } else {
+      return "http://placehold.it/300x150";
+    }
+  };
+  
   $scope.addToBasket = function(article) {
     var basket = $scope.basket;
     

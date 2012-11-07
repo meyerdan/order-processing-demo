@@ -13,6 +13,7 @@ import com.camunda.fox.showcase.fruitshop.order.boundary.rest.dto.OrderDTO;
 import com.camunda.fox.showcase.fruitshop.order.boundary.rest.dto.OrderItemDTO;
 import com.camunda.fox.showcase.fruitshop.order.entity.Order;
 import com.camunda.fox.showcase.fruitshop.order.entity.OrderItem;
+import com.camunda.fox.showcase.fruitshop.order.entity.OrderUpdate;
 import com.camunda.fox.showcase.fruitshop.order.process.ProcessOrder;
 import com.camunda.fox.showcase.fruitshop.order.repository.OrderRepository;
 
@@ -45,7 +46,7 @@ public class OrderService {
       orderItems.add(orderItem);
     }
     
-    orderRepository.saveAndFlush(order);    
+    orderRepository.saveAndFlush(order);
     
     businessProcess.setVariable(ProcessOrder.VARNAME_ORDER_ID, order.getId());
     String pid = businessProcess.startProcessByMessage("New Order").getId();
@@ -57,13 +58,13 @@ public class OrderService {
   }
 
   protected Integer getAmount(OrderItemDTO newOrderItem) {
-    if(newOrderItem.getAmount() == null) {
+    if (newOrderItem.getAmount() == -1) {
       throw new RuntimeException("amount cannot be null");
     }
     
-    Integer amount = Integer.parseInt(newOrderItem.getAmount());
+    int amount = newOrderItem.getAmount();
     
-    if(amount <= 0) {
+    if (amount <= 0) {
       throw new RuntimeException("amount must be greater than '0'");
     }
     
@@ -72,7 +73,7 @@ public class OrderService {
 
   protected Article getArticle(OrderItemDTO newOrderItem) {
     
-    if(newOrderItem.getArticleId() == null) {
+    if (newOrderItem.getArticleId() == -1) {
       throw new RuntimeException("article ID cannot be null.");
     }
     
@@ -84,5 +85,13 @@ public class OrderService {
     }
     
     return article;
+  }
+
+  public Order getOrder(long id) {
+    return orderRepository.findByIdFetchOrderItems(id);
+  }
+
+  public List<OrderUpdate> getOrderUpdates(long id) {
+    return orderRepository.findOrderUpdatesByOrderId(id);
   }
 }

@@ -2,12 +2,14 @@ package com.camunda.fox.showcase.fruitshop.order.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.camunda.fox.showcase.fruitshop.application.common.AbstractEntity;
 import com.camunda.fox.showcase.fruitshop.inventory.entity.Article;
 
 
 @Entity
+@Table(name="FS_ORDER_ITEM_")
 public class OrderItem extends AbstractEntity {
 
   public static final String STATUS_CONFIRMED = "confirmed";

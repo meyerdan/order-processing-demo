@@ -4,6 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.camunda.fox.showcase.fruitshop.application.common.AbstractEntity;
 
@@ -12,6 +13,7 @@ import com.camunda.fox.showcase.fruitshop.application.common.AbstractEntity;
  * @author nico.rehwaldt
  */
 @Entity
+@Table(name="FS_ARTICLE_")
 public class Article extends AbstractEntity {
   
   private static final long serialVersionUID = 1L;

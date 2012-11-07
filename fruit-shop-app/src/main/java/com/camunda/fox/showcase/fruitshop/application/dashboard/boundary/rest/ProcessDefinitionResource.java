@@ -4,6 +4,8 @@ import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -22,6 +24,8 @@ import org.activiti.engine.repository.ProcessDefinition;
  * @author Daniel Meyer
  *
  */
+@Stateless
+@LocalBean
 @Path("/dashboard/process-definition")
 public class ProcessDefinitionResource {
   

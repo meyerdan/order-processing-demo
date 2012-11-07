@@ -2,15 +2,16 @@ package com.camunda.fox.showcase.fruitshop.inventory.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.camunda.fox.showcase.fruitshop.application.common.AbstractEntity;
-import com.camunda.fox.showcase.fruitshop.order.entity.OrderItem;
 
 /**
  * 
  * @author nico.rehwaldt
  */
 @Entity
+@Table(name="FS_INVENTORY_ITEM_")
 public class InventoryItem extends AbstractEntity {
 
   private static final long serialVersionUID = 1L;

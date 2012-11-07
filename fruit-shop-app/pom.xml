@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.camunda.fox</groupId>
@@ -75,20 +75,12 @@
       <scope>test</scope>
     </dependency>
     
-    
-    
     <!-- Websocket Stuff -->
 
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
       <version>1.6.1</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.atmosphere</groupId>
-      <artifactId>atmosphere-compat-jbossweb</artifactId>
-      <version>1.0.0</version>
     </dependency>
 
     <dependency>
@@ -154,6 +146,13 @@
         <web.resources.override>src/main/runtime/jboss/webapp</web.resources.override>
         <java.resources.override>src/main/runtime/jboss/resources</java.resources.override>
       </properties>
+      <dependencies>
+        <dependency>
+          <groupId>org.atmosphere</groupId>
+          <artifactId>atmosphere-compat-jbossweb</artifactId>
+          <version>1.0.0</version>
+        </dependency>
+      </dependencies>
     </profile>
     <profile>
       <id>jboss-remote</id>

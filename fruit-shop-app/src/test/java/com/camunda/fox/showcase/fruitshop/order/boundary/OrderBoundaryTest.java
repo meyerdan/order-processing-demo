@@ -79,8 +79,8 @@ public class OrderBoundaryTest {
     OrderDTO orderDTO = new OrderDTO();
     orderDTO.setCusomer("Test");
     OrderItemDTO orderItem = new OrderItemDTO();
-    orderItem.setAmount("5");
-    orderItem.setArticleId(String.valueOf(a1.getId()));
+    orderItem.setAmount(5);
+    orderItem.setArticleId(a1.getId());
     orderDTO.getOrderItems().add(orderItem);
     
     String newOrderId = orderService.newOrder(orderDTO);
