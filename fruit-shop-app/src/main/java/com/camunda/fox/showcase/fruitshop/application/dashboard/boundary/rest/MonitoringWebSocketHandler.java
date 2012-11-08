@@ -10,7 +10,7 @@ import org.atmosphere.websocket.WebSocket;
 import org.atmosphere.websocket.WebSocketHandler;
 
 @WebSocketHandlerService
-public class TpdInsuranceMonitor extends WebSocketHandler {
+public class MonitoringWebSocketHandler extends WebSocketHandler {
 
   @Override
   public void onOpen(WebSocket webSocket) {

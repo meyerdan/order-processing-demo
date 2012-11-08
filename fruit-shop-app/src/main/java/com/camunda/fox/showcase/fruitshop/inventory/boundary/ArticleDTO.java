@@ -22,12 +22,15 @@ public class ArticleDTO {
   
   private int available;
   
+  private String imageUrl;
+  
   public ArticleDTO(Article article) {
     this.id = article.getId();
     this.name = article.getName();
     this.description = article.getDescription();
     
     this.price = article.getPrice();
+    this.imageUrl = article.getPictureUrl();
   }
 
   public ArticleDTO(Article article, InventoryItem inventoryItem) {
@@ -98,6 +101,16 @@ public class ArticleDTO {
    */
   public void setAvailable(int available) {
     this.available = available;
+  }
+  
+  
+  public String getImageUrl() {
+    return imageUrl;
+  }
+  
+  
+  public void setImageUrl(String pictureUrl) {
+    this.imageUrl = pictureUrl;
   }
   
   // static helpers /////////////////////////////////////////////////////

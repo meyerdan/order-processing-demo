@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.camunda.fox.showcase.fruitshop.order.entity.Order;
 import com.camunda.fox.showcase.fruitshop.order.entity.Order.Status;
+import com.camunda.fox.showcase.fruitshop.order.entity.OrderUpdate;
 
 /**
  * 
@@ -19,6 +20,8 @@ public class OrderDTO {
   private String customer;
 
   private List<OrderItemDTO> orderItems = new ArrayList<OrderItemDTO>();
+  
+  private List<OrderUpdateDTO> orderUpdates = new ArrayList<OrderUpdateDTO>();
 
   private Order.Status status;
 
@@ -37,7 +40,12 @@ public class OrderDTO {
     this.created = order.getCreated();
   }
 
-  public Status getStatus() {
+  public OrderDTO(Order order, List<OrderUpdate> orderUpdates2) {
+	  this(order);
+	  this.orderUpdates = OrderUpdateDTO.wrapAll(orderUpdates2);	  
+  }
+
+public Status getStatus() {
     return status;
   }
 
@@ -75,5 +83,13 @@ public class OrderDTO {
 
   public void setCreated(Date created) {
     this.created = created;
+  }
+  
+  public List<OrderUpdateDTO> getOrderUpdates() {
+	return orderUpdates;
+  }
+  
+  public void setOrderUpdates(List<OrderUpdateDTO> orderUpdates) {
+	this.orderUpdates = orderUpdates;
   }
 }

@@ -1,5 +1,6 @@
 package com.camunda.fox.showcase.fruitshop.order.boundary;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -12,6 +13,7 @@ import com.camunda.fox.showcase.fruitshop.inventory.repository.ArticleRepository
 import com.camunda.fox.showcase.fruitshop.order.boundary.rest.dto.OrderDTO;
 import com.camunda.fox.showcase.fruitshop.order.boundary.rest.dto.OrderItemDTO;
 import com.camunda.fox.showcase.fruitshop.order.entity.Order;
+import com.camunda.fox.showcase.fruitshop.order.entity.Order.Status;
 import com.camunda.fox.showcase.fruitshop.order.entity.OrderItem;
 import com.camunda.fox.showcase.fruitshop.order.entity.OrderUpdate;
 import com.camunda.fox.showcase.fruitshop.order.process.ProcessOrder;
@@ -34,6 +36,8 @@ public class OrderService {
     Order order = new Order();
     order.setCustomer(newOrder.getCustomer());
     
+    double total = 0;
+    
     List<OrderItem> orderItems = order.getOrderItems();
     for (OrderItemDTO newOrderItem : newOrder.getOrderItems()) {
       
@@ -44,7 +48,11 @@ public class OrderService {
       orderItem.setAmount(amount);
       orderItem.setArticle(article);
       orderItems.add(orderItem);
+      
+      total += amount * article.getPrice();
     }
+    
+    order.setTotal(total);
     
     orderRepository.saveAndFlush(order);
     
@@ -93,5 +101,16 @@ public class OrderService {
 
   public List<OrderUpdate> getOrderUpdates(long id) {
     return orderRepository.findOrderUpdatesByOrderId(id);
+  }
+
+	
+  public void updateOrderStatus(Long orderId, String newStatus) {
+	Order order = getOrder(orderId);
+	order.setStatus(Status.valueOf(newStatus));
+	
+	OrderUpdate orderUpdate = new OrderUpdate(order, "Status set to "+newStatus);
+	
+	List<OrderUpdate> orderUpdates = order.getOrderUpdates();
+	orderUpdates.add(orderUpdate);
   }
 }

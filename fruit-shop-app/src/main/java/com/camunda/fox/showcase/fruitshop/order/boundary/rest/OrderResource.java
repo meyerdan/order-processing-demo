@@ -20,6 +20,7 @@ import com.camunda.fox.showcase.fruitshop.order.boundary.rest.dto.NewOrderRespon
 import com.camunda.fox.showcase.fruitshop.order.boundary.rest.dto.OrderDTO;
 import com.camunda.fox.showcase.fruitshop.order.boundary.rest.dto.OrderUpdateDTO;
 import com.camunda.fox.showcase.fruitshop.order.entity.Order;
+import com.camunda.fox.showcase.fruitshop.order.entity.OrderUpdate;
 
 /**
  * 
@@ -59,7 +60,9 @@ public class OrderResource extends AbstractResource {
   @Path("{id}")
   public OrderDTO get(@PathParam("id") long id) {
     Order order = orderService.getOrder(id);
-    return new OrderDTO(order);
+    List<OrderUpdate> orderUpdates = orderService.getOrderUpdates(id);
+    
+    return new OrderDTO(order,orderUpdates);
   }
   
   @GET

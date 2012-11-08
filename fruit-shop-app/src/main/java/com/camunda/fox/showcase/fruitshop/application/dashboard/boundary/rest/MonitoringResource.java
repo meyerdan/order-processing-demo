@@ -1,7 +1,5 @@
 package com.camunda.fox.showcase.fruitshop.application.dashboard.boundary.rest;
 
-import javax.ejb.LocalBean;
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -9,10 +7,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Stateless
-@LocalBean
 @Path("/dashboard/monitor")
-public class MonitoringBean {
+public class MonitoringResource {
 
   @Inject
   private BroadCaster broadCaster;
@@ -20,7 +16,6 @@ public class MonitoringBean {
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   public Response toggle() {
-	broadCaster.refresh();
     String state = broadCaster.getState();
     return Response.ok(state).build();
   }

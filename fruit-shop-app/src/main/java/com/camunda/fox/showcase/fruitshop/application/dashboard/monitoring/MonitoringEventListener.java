@@ -3,9 +3,9 @@ package com.camunda.fox.showcase.fruitshop.application.dashboard.monitoring;
 import javax.naming.InitialContext;
 import javax.transaction.Status;
 import javax.transaction.Synchronization;
+import javax.transaction.Transaction;
 import javax.transaction.TransactionManager;
 
-import org.activiti.cdi.impl.util.ProgrammaticBeanLookup;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.ExecutionListener;
 
@@ -25,19 +25,21 @@ public class MonitoringEventListener implements ExecutionListener {
       event.setType(execution.getEventName());
       
       TransactionManager transactionManager = InitialContext.doLookup("java:jboss/TransactionManager");
-      transactionManager.getTransaction().registerSynchronization(new Synchronization() {
-        
-        public void beforeCompletion() {
-        }
-        
-        public void afterCompletion(int status) {
-          if(status == Status.STATUS_COMMITTED)  {
-            broadcaster.broadcast(event);
-          }
-        }
-      });
-    
-  }
-  
-  
+      
+	  Transaction transaction = transactionManager.getTransaction();
+	  if(transaction.getStatus() == Status.STATUS_ACTIVE) {
+		transaction.registerSynchronization(new Synchronization() {
+		    
+		  public void beforeCompletion() {
+		  }
+		    
+		  public void afterCompletion(int status) {
+		    if(status == Status.STATUS_COMMITTED)  {
+		      broadcaster.broadcast(event);
+		    }
+		  }
+		});
+	  }
+	}
+      
 }

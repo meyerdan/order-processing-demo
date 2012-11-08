@@ -51,7 +51,17 @@ public class InventoryService {
   }
   
   public void releaseReservation(Long orderId) {
-    
+	  
+	  List<Object[]> itemsForOrder = getItemsForOrder(orderId);
+	  
+	  for (Object[] objects : itemsForOrder) {
+	      OrderItem oi = (OrderItem) objects[0];
+	      InventoryItem ii = (InventoryItem) objects[1];
+	      
+	      int reserved = ii.getReserved();
+	      int orderedAmount = oi.getAmount();
+	      ii.setReserved(reserved + orderedAmount);	      
+	  }
   }
 
   /**

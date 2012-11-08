@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,6 +25,10 @@ public class Order extends AbstractEntity {
   public enum Status {
     NEW, 
     CONFIRMED, 
+    CANCELLED,
+    PAYMENT_PROCESSED,
+    PAYMENT_PROBLEMS,
+    SHIPPED,
   }
 
   @Temporal(TemporalType.TIMESTAMP)
@@ -39,6 +44,8 @@ public class Order extends AbstractEntity {
   private String customer;
 
   private String processInstanceId;
+  
+  private double total;
 
   private Status status = Status.NEW;
 
@@ -89,4 +96,13 @@ public class Order extends AbstractEntity {
   public Date getCreated() {
     return created;
   }
+  
+  public double getTotal() {
+	return total;
+  }
+  
+  public void setTotal(double total) {
+	this.total = total;
+  }
+
 }

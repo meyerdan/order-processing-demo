@@ -22,6 +22,8 @@ public class Article extends AbstractEntity {
   
   private int price;
   
+  private String pictureUrl;
+  
   @Lob
   private String description;
   
@@ -30,11 +32,12 @@ public class Article extends AbstractEntity {
   
   public Article() { }
 
-  public Article(String name, String description, int availability, int price) {
+  public Article(String name, String description, int availability, int price, String pictureUrl) {
     this.name = name;
     this.description = description;
     
     this.price = price;
+    this.pictureUrl = pictureUrl;
     this.inventoryItem = new InventoryItem(this, availability);
   }
 
@@ -68,5 +71,13 @@ public class Article extends AbstractEntity {
   
   public void setInventoryItem(InventoryItem inventoryItem) {
     this.inventoryItem = inventoryItem;
+  }
+  
+  public String getPictureUrl() {
+    return pictureUrl;
+  }
+  
+  public void setPictureUrl(String pictureUrl) {
+    this.pictureUrl = pictureUrl;
   }
 }

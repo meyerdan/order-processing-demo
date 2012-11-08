@@ -137,11 +137,16 @@ public class ArticleResource extends AbstractResource {
       
       List<Article> articles = new ArrayList<Article>();
       
-      articles.add(new Article("Cake", "A delicious cake. Home made", 5, 50));
-      articles.add(new Article("Salat", "A freshly harvested salat", 3, 4));
-      articles.add(new Article("Cucumber", "Not a testing framework for Ruby", 0, 3));
-      articles.add(new Article("Salami", "Real german sausage", 10, 12));
-      articles.add(new Article("Weißwurscht", "Bavarian special dish. Some call it sausage", 20, 10));
+      articles.add(new Article("Cake", "A delicious cake. Home made", 5, 50, 
+              "http://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Pound_layer_cake.jpg/309px-Pound_layer_cake.jpg"));
+      articles.add(new Article("Salat", "A freshly harvested salat", 3, 4,
+              "http://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Iceberg_lettuce_in_SB.jpg/320px-Iceberg_lettuce_in_SB.jpg"));
+      articles.add(new Article("Cucumber", "Not a testing framework for Ruby", 0, 3,
+              "http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/PicklingCucumbers.jpg/320px-PicklingCucumbers.jpg"));
+      articles.add(new Article("Salami", "Real german sausage", 10, 12,
+              "http://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Salami_aka.jpg/320px-Salami_aka.jpg"));
+      articles.add(new Article("Weißwurscht", "Bavarian special dish. Some call it sausage", 20, 10,
+              "http://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Wei%C3%9Fwurst-1.jpg/315px-Wei%C3%9Fwurst-1.jpg"));
       
       for (Article article : articles) {
         articleRepository.saveAndFlush(article);

@@ -9,4 +9,5 @@ function OrderController($scope, $routeParams, Order, OrderUpdate) {
   $scope.order = Order.get({ id: $routeParams.id });
   
   $scope.updates = OrderUpdate.query({ orderId: $routeParams.id });
+  
 }

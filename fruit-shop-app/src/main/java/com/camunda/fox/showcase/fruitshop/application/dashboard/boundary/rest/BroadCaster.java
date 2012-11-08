@@ -14,7 +14,6 @@ import javax.inject.Inject;
 import org.activiti.engine.HistoryService;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
-import org.activiti.engine.delegate.ExecutionListener;
 import org.activiti.engine.repository.DiagramLayout;
 import org.activiti.engine.repository.DiagramNode;
 import org.activiti.engine.repository.ProcessDefinition;
@@ -41,7 +40,7 @@ public class BroadCaster {
   private Map<String, Long> activityCounts;
   
   @PostConstruct
-  protected void initialize() {
+  public void refresh() {
     
     ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
        .processDefinitionKey("sid-E1DEF3AA-1321-4DBE-9877-D18DDF51AC6D")
@@ -80,7 +79,7 @@ public class BroadCaster {
   @Asynchronous
   public void broadcast(MonitoringEvent monitoringEvent) {
     
-    initialize();    
+	refresh();    
     push();
        
   }
