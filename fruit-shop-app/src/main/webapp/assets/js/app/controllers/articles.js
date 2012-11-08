@@ -11,7 +11,7 @@ function ArticlesController($scope, Article) {
     for (var key in items) {
       var item = items[key];
       
-      if (item.article == article) {
+      if (item.article.id == article.id) {
         return item;
       }
     }

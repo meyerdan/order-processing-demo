@@ -51,9 +51,10 @@
           </div>
           <div ng-show="state == 'SUCCESS'">
             <p>
-              Your order has been added with the id <strong>{{ order.orderId }}</strong>.
-              You can track the order status via <a href="#/order/{{order.orderId}}" ng-click="checkoutDialog.close()">this link</a>.
+              Your order has been added with the id <strong>{{ order.orderId }}</strong>. 
             </p>
+            <p>
+                          </p>
           </div>
           <div ng-show="state == 'FAILURE'">
             <p>
@@ -69,6 +70,12 @@
                   ng-hide="state"
                   ng-click="buy()"
                   ng-disabled="!isValid(checkoutBasketForm)">Buy</button>
+          
+          <a class="btn btn-primary" 
+             href="#/order/{{order.orderId}}" 
+             ng-click="checkoutDialog.close()"
+             ng-show="order.orderId">Track Order {{ order.orderId }}</a>
+
           <button class="btn"
                   ng-show="state" 
                   ng-click="checkoutDialog.close()">Close</button>
