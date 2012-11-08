@@ -4,11 +4,14 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Asynchronous;
 import javax.ejb.DependsOn;
 import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import org.activiti.engine.HistoryService;
@@ -26,38 +29,40 @@ import com.camunda.fox.showcase.fruitshop.application.dashboard.monitoring.Monit
 @DependsOn("ProcessArchiveSupport")
 public class BroadCaster {
 
+  private static Logger LOGGER = Logger.getLogger(BroadCaster.class.getName());
+  
   @Inject
   private HistoryService historyService;
   
   @Inject
   private RepositoryService repositoryService;
   
-  @Inject 
+  @Inject
   private RuntimeService runtimeService;
-
+  
   private DiagramLayout processDiagramLayout;
   private String processDefinitionId;
   private Map<String, Long> activityCounts;
-  
+
   @PostConstruct
   public void refresh() {
-    
+
     ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
-       .processDefinitionKey("sid-E1DEF3AA-1321-4DBE-9877-D18DDF51AC6D")
-       .latestVersion()
-       .singleResult();
+      .processDefinitionKey("sid-E1DEF3AA-1321-4DBE-9877-D18DDF51AC6D")
+      .latestVersion()
+      .singleResult();
     processDefinitionId = processDefinition.getId();
-          
+
     processDiagramLayout = repositoryService.getProcessDiagramLayout(processDefinitionId);
-    
+
     Map<String, Long> activityInstanceCounts = new HashMap<String, Long>();
-    
+
     for (int i = 0; i < processDiagramLayout.getNodes().size(); i++) {
       DiagramNode node = processDiagramLayout.getNodes().get(i);
       // TODO: get all the counts in a single DB query!!
       long count = 0;
-      
-      if(node.getId().contains("End")) {
+
+      if (node.getId().contains("End")) {
         count = historyService.createHistoricActivityInstanceQuery()
           .activityId(node.getId())
           .processDefinitionId(processDefinitionId)
@@ -71,26 +76,31 @@ public class BroadCaster {
       }
       activityInstanceCounts.put(node.getId(), count);
     }
-    
+
     activityCounts = activityInstanceCounts;
-    
+
   }
 
   @Asynchronous
   public void broadcast(MonitoringEvent monitoringEvent) {
-    
-	refresh();    
+
+    refresh();
     push();
-       
+
   }
-  
+
   public void push() {
     String state = getState();
-    Broadcaster broadcaster = BroadcasterFactory.getDefault().lookup("control", true);
-    if (broadcaster != null) {
-      broadcaster.broadcast(state);
+    
+    BroadcasterFactory broadcasterFactory = BroadcasterFactory.getDefault();
+    if (broadcasterFactory == null) {
+      LOGGER.log(Level.WARNING, "Not pushing because WebSocket broadCaster factory not found");
+    } else {
+      Broadcaster broadcaster = broadcasterFactory.lookup("control", true);
+      if (broadcaster != null) {
+        broadcaster.broadcast(state);
+      }
     }
-
   }
 
   public String getState() {
@@ -109,8 +119,6 @@ public class BroadCaster {
 
     jsonWriter.write("}");
     return jsonWriter.toString();
-    
+
   }
-
-
 }

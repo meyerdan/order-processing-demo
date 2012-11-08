@@ -2,12 +2,24 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
   <display-name>fruit shop</display-name>
 
+  <servlet>
+    <servlet-name>AtmosphereServlet</servlet-name>
+    <servlet-class>org.atmosphere.cpr.AtmosphereServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+    <async-supported>true</async-supported>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>AtmosphereServlet</servlet-name>
+    <url-pattern>/monitor/*</url-pattern>
+  </servlet-mapping>
+
   <!-- 
     needed to enable POJO mapping in jersey, even if it conflicts with the 
     JAX-RS application definition in FruitShopApplication
   -->
   <servlet>
-    <servlet-name>jersey-serlvet</servlet-name>
+    <servlet-name>JerseyServlet</servlet-name>
     <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
     <init-param>
       <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
@@ -16,7 +28,7 @@
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>jersey-serlvet</servlet-name>
+    <servlet-name>JerseyServlet</servlet-name>
     <url-pattern>/app/resources/*</url-pattern>
   </servlet-mapping>
 

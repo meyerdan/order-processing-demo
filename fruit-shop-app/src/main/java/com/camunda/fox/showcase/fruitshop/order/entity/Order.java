@@ -37,7 +37,7 @@ public class Order extends AbstractEntity {
   @OneToMany(cascade={CascadeType.PERSIST})
   private List<OrderItem> orderItems = new ArrayList<OrderItem>();
 
-  @OneToMany(mappedBy="order")
+  @OneToMany(mappedBy="order", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
   private List<OrderUpdate> orderUpdates = new ArrayList<OrderUpdate>();
 
   @NotNull
