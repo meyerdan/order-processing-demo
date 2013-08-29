@@ -6,8 +6,8 @@ import javax.ejb.Schedule;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import org.activiti.engine.RuntimeService;
-import org.activiti.engine.runtime.Execution;
+import org.camunda.bpm.engine.RuntimeService;
+import org.camunda.bpm.engine.runtime.Execution;
 
 /**
  *  We periodically trigger all waiting executions for shipment

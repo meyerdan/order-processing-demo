@@ -1,12 +1,11 @@
 package com.camunda.fox.showcase.fruitshop.order.boundary;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import org.activiti.cdi.BusinessProcess;
+import org.camunda.bpm.engine.cdi.BusinessProcess;
 
 import com.camunda.fox.showcase.fruitshop.inventory.entity.Article;
 import com.camunda.fox.showcase.fruitshop.inventory.repository.ArticleRepository;

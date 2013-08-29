@@ -7,8 +7,8 @@ import javax.transaction.Synchronization;
 import javax.transaction.Transaction;
 import javax.transaction.TransactionManager;
 
-import org.activiti.engine.delegate.DelegateExecution;
-import org.activiti.engine.delegate.ExecutionListener;
+import org.camunda.bpm.engine.delegate.DelegateExecution;
+import org.camunda.bpm.engine.delegate.ExecutionListener;
 
 import com.camunda.fox.showcase.fruitshop.application.dashboard.boundary.rest.BroadCaster;
 import com.camunda.fox.showcase.fruitshop.application.util.TransactionManagerLookup;

@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.camunda.fox</groupId>
@@ -31,15 +31,21 @@
     <!-- Java EE 6 Specification -->
     <dependency>
       <!-- client for Java EE application server integration -->
-      <groupId>com.camunda.fox.platform</groupId>
-      <artifactId>fox-platform-client</artifactId>
-      <version>6.1.6</version>
+      <groupId>org.camunda.bpm.javaee</groupId>
+      <artifactId>camunda-ejb-client</artifactId>
+      <version>7.0.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <!-- client for Java EE application server integration -->
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine-cdi</artifactId>
+      <version>7.0.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <!-- process engine -->
-      <groupId>com.camunda.fox.engine</groupId>
-      <artifactId>fox-engine</artifactId>
-      <version>6.1.6</version>
+      <groupId>org.camunda.bpm</groupId>
+      <artifactId>camunda-engine</artifactId>
+      <version>7.0.0-SNAPSHOT</version>
       <scope>provided</scope>
     </dependency>
 
@@ -74,7 +80,7 @@
       <artifactId>shrinkwrap-resolver-api-maven</artifactId>
       <scope>test</scope>
     </dependency>
-    
+
     <!-- Websocket Stuff -->
 
     <dependency>
@@ -88,7 +94,7 @@
       <artifactId>atmosphere-runtime</artifactId>
       <version>1.0.0</version>
     </dependency>
-    
+
   </dependencies>
 
   <build>

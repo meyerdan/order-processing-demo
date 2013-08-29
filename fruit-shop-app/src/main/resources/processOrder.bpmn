@@ -404,6 +404,9 @@
         <omgdi:waypoint xsi:type="omgdc:Point" x="645.0" y="212.0"/>
         <omgdi:waypoint xsi:type="omgdc:Point" x="645.0" y="317.0"/>
         <omgdi:waypoint xsi:type="omgdc:Point" x="695.0" y="317.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="22.0" width="20.0" x="648.0" y="245.0"/>
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="sid-AC059BC1-8E31-4C06-968F-50EB36132215_gui" bpmnElement="sid-AC059BC1-8E31-4C06-968F-50EB36132215">
         <omgdi:waypoint xsi:type="omgdc:Point" x="820.0" y="317.0"/>

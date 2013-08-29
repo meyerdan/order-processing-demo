@@ -2,6 +2,7 @@ package com.camunda.fox.showcase.fruitshop.inventory.repository;
 
 
 import java.util.List;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 

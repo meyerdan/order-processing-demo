@@ -1,6 +1,7 @@
 package com.camunda.fox.showcase.fruitshop.order.repository;
 
 import java.util.List;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 

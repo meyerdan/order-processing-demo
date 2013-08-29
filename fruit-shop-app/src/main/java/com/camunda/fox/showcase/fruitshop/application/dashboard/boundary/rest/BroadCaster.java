@@ -11,22 +11,21 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Asynchronous;
 import javax.ejb.DependsOn;
 import javax.ejb.Singleton;
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import org.activiti.engine.HistoryService;
-import org.activiti.engine.RepositoryService;
-import org.activiti.engine.RuntimeService;
-import org.activiti.engine.repository.DiagramLayout;
-import org.activiti.engine.repository.DiagramNode;
-import org.activiti.engine.repository.ProcessDefinition;
 import org.atmosphere.cpr.Broadcaster;
 import org.atmosphere.cpr.BroadcasterFactory;
+import org.camunda.bpm.engine.HistoryService;
+import org.camunda.bpm.engine.RepositoryService;
+import org.camunda.bpm.engine.RuntimeService;
+import org.camunda.bpm.engine.repository.DiagramLayout;
+import org.camunda.bpm.engine.repository.DiagramNode;
+import org.camunda.bpm.engine.repository.ProcessDefinition;
 
 import com.camunda.fox.showcase.fruitshop.application.dashboard.monitoring.MonitoringEvent;
 
 @Singleton
-@DependsOn("ProcessArchiveSupport")
+@DependsOn("DefaultEjbProcessApplication")
 public class BroadCaster {
 
   private static Logger LOGGER = Logger.getLogger(BroadCaster.class.getName());

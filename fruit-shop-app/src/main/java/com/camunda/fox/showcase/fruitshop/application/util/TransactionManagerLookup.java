@@ -1,11 +1,10 @@
 package com.camunda.fox.showcase.fruitshop.application.util;
 
 import java.util.Arrays;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.transaction.TransactionManager;
-
-import com.sun.imageio.plugins.common.I18N;
 
 /**
  *

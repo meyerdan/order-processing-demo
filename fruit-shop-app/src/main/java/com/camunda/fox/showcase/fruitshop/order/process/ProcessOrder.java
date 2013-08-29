@@ -3,8 +3,8 @@ package com.camunda.fox.showcase.fruitshop.order.process;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.activiti.cdi.BusinessProcess;
-import org.activiti.engine.delegate.BpmnError;
+import org.camunda.bpm.engine.cdi.BusinessProcess;
+import org.camunda.bpm.engine.delegate.BpmnError;
 
 import com.camunda.fox.showcase.fruitshop.inventory.boundary.InventoryService;
 import com.camunda.fox.showcase.fruitshop.order.boundary.OrderService;

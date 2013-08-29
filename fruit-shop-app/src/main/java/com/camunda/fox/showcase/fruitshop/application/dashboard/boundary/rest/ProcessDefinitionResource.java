@@ -14,10 +14,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import org.activiti.engine.RepositoryService;
-import org.activiti.engine.impl.util.IoUtil;
-import org.activiti.engine.repository.DiagramLayout;
-import org.activiti.engine.repository.ProcessDefinition;
+import org.camunda.bpm.engine.RepositoryService;
+import org.camunda.bpm.engine.impl.util.IoUtil;
+import org.camunda.bpm.engine.repository.DiagramLayout;
+import org.camunda.bpm.engine.repository.ProcessDefinition;
 
 /**
  * 
